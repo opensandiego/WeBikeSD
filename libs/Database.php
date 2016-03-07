@@ -10,7 +10,7 @@ require_once( 'Util.php' );
 abstract class DatabaseConnection extends mysqli
 {
 	
-	// const DATABASE = 'cyclelive';
+	const DATABASE = 'webkesd';
 
 	public function __construct( $host, $user, $password, $database, $port )
 	{
@@ -31,26 +31,26 @@ abstract class DatabaseConnection extends mysqli
 
 class LocalDatabaseConnection extends DatabaseConnection 
 {
-	//const HOST     = getenv('OPENSHIFT_MYSQL_DB_HOST');
+	const HOST     = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
 	public function __construct()
 	{
-		$database = 'cyclelive';
+		$database = 'webkesd';
 		/*
 		* If you are using openshift mysql database cartridge, or want to use it for testing, uncomment this section, and comment out any other database construct ref
 		*/
 		// This requires the inclusion of mysql db cartridge. 
-		// $host = (getenv('OPENSHIFT_MYSQL_DB_HOST')) ? getenv('OPENSHIFT_MYSQL_DB_HOST') : putenv('OPENSHIFT_MYSQL_DB_HOST=localhost') ;
-		// $port = (getenv('OPENSHIFT_MYSQL_DB_PORT')) ? getenv('OPENSHIFT_MYSQL_DB_PORT') : putenv('OPENSHIFT_MYSQL_DB_PORT=3306');
-		// $user = (getenv('OPENSHIFT_MYSQL_DB_USERNAME')) ? getenv('OPENSHIFT_MYSQL_DB_USERNAME') : putenv('OPENSHIFT_MYSQL_DB_USERNAME=root') ;
-		// $pass = (getenv('OPENSHIFT_MYSQL_DB_PASSWORD')) ? getenv('OPENSHIFT_MYSQL_DB_PASSWORD') : putenv('OPENSHIFT_MYSQL_DB_PASSWORD=root') ;
+		$host = (getenv('OPENSHIFT_MYSQL_DB_HOST')) ? getenv('OPENSHIFT_MYSQL_DB_HOST') : putenv('OPENSHIFT_MYSQL_DB_HOST=localhost') ;
+		$port = (getenv('OPENSHIFT_MYSQL_DB_PORT')) ? getenv('OPENSHIFT_MYSQL_DB_PORT') : putenv('OPENSHIFT_MYSQL_DB_PORT=3306');
+		$user = (getenv('OPENSHIFT_MYSQL_DB_USERNAME')) ? getenv('OPENSHIFT_MYSQL_DB_USERNAME') : putenv('OPENSHIFT_MYSQL_DB_USERNAME=root') ;
+		$pass = (getenv('OPENSHIFT_MYSQL_DB_PASSWORD')) ? getenv('OPENSHIFT_MYSQL_DB_PASSWORD') : putenv('OPENSHIFT_MYSQL_DB_PASSWORD=root') ;
 
 		// parent::__construct( getenv('OPENSHIFT_MYSQL_DB_HOST'), getenv('OPENSHIFT_MYSQL_DB_USERNAME'), getenv('OPENSHIFT_MYSQL_DB_PASSWORD'), self::DATABASE, getenv('OPENSHIFT_MYSQL_DB_PORT') );
 		
-		$host = 'cycle.c0pz9rduf4ic.us-east-1.rds.amazonaws.com';
+		$host = 'http://webkesd-webikesd.rhcloud.com';
 		$port = '3306';
-		$user = 'cycleUser' ;
-		$pass = 'Ph1lly123';
+		$user = 'adminfxt11yk' ;
+		$pass = 'rB4-DXZc8tBd';
 		parent::__construct( $host, $user, $pass, $database, $port );
 	}
 }
